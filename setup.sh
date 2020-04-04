@@ -8,4 +8,5 @@ if ! grep -q '/\.bash/\*\.sh' "$HOME/.bashrc"; then
 	cat "$root/snippets/bash-import.sh" >> "$HOME/.bashrc";
 fi
 
+ln -fsT "$root/bin" "$HOME/.bin"
 ln -fs "$root/gitconfig" "$HOME/.gitconfig"
