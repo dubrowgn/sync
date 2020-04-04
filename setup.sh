@@ -1,7 +1,11 @@
 #! /bin/bash
 
 root="$(realpath -L "$(dirname "$0")")"
-echo $root
 
-ln -fs "$root/bash" "$HOME/.bash"
+# setup .bash imports
+ln -fsT "$root/bash" "$HOME/.bash"
+if ! grep -q '/\.bash/\*\.sh' "$HOME/.bashrc"; then
+	cat "$root/snippets/bash-import.sh" >> "$HOME/.bashrc";
+fi
+
 ln -fs "$root/gitconfig" "$HOME/.gitconfig"
